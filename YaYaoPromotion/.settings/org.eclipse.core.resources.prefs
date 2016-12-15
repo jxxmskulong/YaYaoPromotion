@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebRoot/seller/templates/leftbar.html=UTF-8
+encoding//WebRoot/seller/templates/main.html=UTF-8
+encoding//WebRoot/seller/templates/news_add.html=UTF-8
+encoding//WebRoot/seller/templates/news_delete.html=UTF-8
+encoding//WebRoot/seller/templates/news_manadsense.html=UTF-8
+encoding//WebRoot/seller/templates/topbar.html=UTF-8
+encoding//src/config/jdbc.properties=UTF-8
+encoding//src/config/uploaderPath.properties=UTF-8
+encoding/<project>=UTF-8
