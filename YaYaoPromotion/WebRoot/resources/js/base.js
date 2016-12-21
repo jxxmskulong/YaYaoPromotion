@@ -34,11 +34,15 @@ var myUtils = {
 	 * 
 	 */
 	executeJS:function(o){
+		if(o==''||o==null||o==undefined){
+			return;
+		}
 		if(/<script/.test(o)){
-			document.write(o);
+			//document.write(o);
+			$("body").after(o);
 		}else if(/.js/.test(o)){
 			var no="<script src='"+o+"'><\/script>";
-			document.write(no);
+			$("body").after(no);
 		}else{
 			eval(o);
 		}

@@ -32,8 +32,8 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        //, serverUrl: URL + "jsp/controller.jsp?uploaderPath=/home/"//服务器配置
-        , serverUrl: URL + "jsp/controller.jsp?uploaderPath=c:/"//本地测试配置
+        , serverUrl: URL + "jsp/controller.jsp?uploaderPath=/home/"//服务器配置
+        //, serverUrl: URL + "jsp/controller.jsp?uploaderPath=c:/"//本地测试配置
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
@@ -112,9 +112,9 @@
         //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
         //粘贴只保留标签，去除标签所有属性
-        //,retainOnlyLabelPasted: false
+        ,retainOnlyLabelPasted: true
 
-        //,pasteplain:false  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
+       // ,pasteplain:false  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
         //纯文本粘贴模式下的过滤规则
         //'filterTxtRules' : function(){
         //    function transP(node){
@@ -143,7 +143,7 @@
         //    }
         //}()
 
-        ,allHtmlEnabled:true //提交到后台的数据是否包含整个html字符串
+       // ,allHtmlEnabled:true //提交到后台的数据是否包含整个html字符串
 
         //insertorderedlist
         //有序列表的下拉配置,值留空时支持多语言自动识别，若配置值，则以此值为准
@@ -297,7 +297,7 @@
         //,toolbarTopOffset:400
 
         //设置远程图片是否抓取到本地保存
-        //,catchRemoteImageEnable: true //设置是否抓取远程图片
+       //,catchRemoteImageEnable: true //设置是否抓取远程图片
 
         //pageBreakTag
         //分页标识符,默认是_ueditor_page_break_tag_
@@ -355,7 +355,7 @@
 
         //默认过滤规则相关配置项目
         //,disabledTableInTable:true  //禁止表格嵌套
-        //,allowDivTransToP:true      //允许进入编辑器的div标签自动变成p标签
+        ,allowDivTransToP:true      //允许进入编辑器的div标签自动变成p标签
         //,rgb2Hex:true               //默认产出的数据中的color自动从rgb格式变成16进制格式
 
 		// xss 过滤是否开启,inserthtml等操作

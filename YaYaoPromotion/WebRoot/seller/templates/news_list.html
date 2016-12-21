@@ -4,6 +4,14 @@
 	<button class="btn btn-danger" ng-click="fixedRecommendNews()">热门置顶新闻列表</button>
 	<button class="btn btn-info" ng-click="isRecommendNews()">推荐新闻列表</button>
 </div>
+<div style="margin:10px;">
+	<button class="btn btn-primary" ng-click="listType('介绍')">介绍</button>
+	<button class="btn btn-primary" ng-click="listType('教程')">教程</button>
+	<button class="btn btn-primary" ng-click="listType('资讯')">资讯</button>
+	<button class="btn btn-primary" ng-click="listType('客服')">客服</button>
+	<button class="btn btn-primary" ng-click="listType('登录')">登录</button>
+	
+</div>
 <!-- 新闻列表选择end -->
 <!-- 新闻列表 -->
 	<div class="panel panel-default">
@@ -34,7 +42,7 @@
   	</div>
 <!-- 新闻列表end -->
 <!-- 加载更多end -->
-	<a class="btn btn-default btn-block text-center" id="addMore" ng-click="addMore(newsList)">
+	<a class="btn btn-default btn-block text-center" ng-if="newsList.length>10" id="addMore" ng-click="addMore(newsList)">
 		<div>点击加载更多》</div>
 	</a>
 <!--  加载更多end -->

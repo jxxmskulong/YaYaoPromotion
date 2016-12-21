@@ -298,7 +298,7 @@
                    		//初始化
                 		initData({
                 			pageNum:1,
-                			pageSize:5,
+                			pageSize:10,
                 			type:"首页",
                 			orderName:"news_id",
                 			orderWay:"desc"
@@ -307,7 +307,7 @@
                    		$scope.allNews=function(){
                    			initData({
                     			pageNum:1,
-                    			pageSize:5,
+                    			pageSize:10,
                     			type:"首页",
                     			orderName:"news_id",
                     			orderWay:"desc"
@@ -343,6 +343,18 @@
               		          }  
               		          });  
                    		};
+                   		//介绍
+                   		$scope.listType=function(typeName){
+                   			initData({
+                    			pageNum:1,
+                    			pageSize:10,
+                    			type:typeName,
+                    			orderName:"time",
+                    			orderWay:"desc"
+                    			});	
+                   			$("#addMore").show();//显示加载
+                   		};
+                   		
                    		/* $scope.$watch("newsList",function(){
                    			console.log($scope.newsList)
                    			if($scope.newsList[0].is_recommend=="1" || $scope.newsList[0].fixed_recommend=="1"){
@@ -354,11 +366,10 @@
                 			$("#addMore").children().text("正在加载中...");
                 			var pageNum=$(".listGroup").size()+1;
                 			var type=$(".nav-active div").text().trim();
-                			console.log(pageNum)
-                			console.log(type)
+                			
                 			initData({
                     			pageNum:pageNum,
-                    			pageSize:5,
+                    			pageSize:10,
                     			type:type,
                     			orderName:"news_id",
                     			orderWay:"desc"

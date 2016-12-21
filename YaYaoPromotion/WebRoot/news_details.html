@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <meta name="description" content="禄宏湖南微交易">
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<style>
+tr,td{
+width:100%;
+border:1px solid #ccc;
+}
+</style>
 <link href="/resources/css/base.css" rel="stylesheet">
 
 </head>
@@ -19,7 +25,7 @@
 		<div class="comment-top-fixed comment-title-top">
 		<a class="comment-title-left" href="javascript:location.href='/index?type='+myUtils.GetQueryString('type')">&lt;返回</a>
 		<span class="comment-title-center">
-		<i class="glyphicon glyphicon-fire"></i>
+		<span class="glyphicon glyphicon-usd" style="top:4px;"></span>
 		禄宏湖南微交易
 		</span>
 		</div>
@@ -37,36 +43,19 @@
 				<span ng-bind-html="html"></span>
 				 <div ng-bind-html="news.content" id="newsDetails">
 				</div> 
-				 		
-					<!-- 遮罩 -->
-					<div id="detailsShow" class="comment-full-screen" style="display:none">
-					<!-- 标志 -->
-					<div class="comment-top-fixed comment-title-top">
-						<a class="comment-title-left" id="detailsHide" href="#">&lt;返回</a>
-					<span class="comment-title-center">
-					<i class="glyphicon glyphicon-fire"></i>
-					禄宏湖南微交易
-					</span>
-					</div>
-					<!-- 标志end -->
-					<iframe src="" id="i" class="comment-full-screen" target="i"   style="margin-top:50px;"></iframe> 
-					</div>
-					<!--  遮罩end -->
-					
+		
 			</div>
 		</div>
 		</div>
 		<!-- 新闻列表end -->
 		<!-- 热门-->
-		<div class="list-group media comment-list-item" style="margin-top:50px;">
+		<!-- <div class="list-group media comment-list-item" style="margin-top:50px;">
 			<div class="media-center">
 				<div class="comment-hot-title">
 					<span class="comment-hot-icon"></span>
 					<span class="comment-hot-word">热门</span>
 					<span class="comment-hot-line"></span>
 				</div>
-				
-		<!-- 热门 -->
 				<div class="listGroup list-group media comment-list-item" style="border-top:1px solid #ccc" ng-repeat="fixedRecommendNews in fixedRecommendList" ng-click="newsDetails(fixedRecommendNews.type,fixedRecommendNews.news_id)">
 					<div class="media-left">
 						<a href="#"> <img class="media-object  comment-list-item-img"
@@ -82,11 +71,11 @@
 					</div>
 				</div>
 				</div>
-				</div>
+				</div> -->
 		<!-- 热门end -->
 		
 		<!-- 推荐 -->
-		<div class="list-group media comment-list-item">
+	<!-- 	<div class="list-group media comment-list-item">
 			<div class="media-center">
 				<div class="comment-hot-title">
 					<span class="comment-hot-icon"></span>
@@ -94,8 +83,8 @@
 					<span class="comment-hot-line"></span>
 				</div>
 				
-		<!-- 随机推荐 -->
-				<div class="listGroup list-group media comment-list-item" style="border-top:1px solid #ccc" ng-repeat="isRecommendNews in isRecommendList" ng-click="newsDetails(isRecommendNews.type,isRecommendNews.news_id)">
+		随机推荐
+				 <div class="listGroup list-group media comment-list-item" style="border-top:1px solid #ccc" ng-repeat="isRecommendNews in isRecommendList" ng-click="newsDetails(isRecommendNews.type,isRecommendNews.news_id)">
 					<div class="media-left">
 						<a href="#"> <img class="media-object  comment-list-item-img"
 					ng-src="{{hisRecommendNews.img_address||newsInit.img_address}}" >
@@ -108,11 +97,11 @@
 						<div class="text-muted"><span ng-bind="isRecommendNews.time||newsInit.time"></span><span class="newsType" ng-bind="isRecommendNews.type||newsInit.type"></span></div>
 					</div>
 					</div>
-				</div>
-		<!-- 随机推荐end -->
+				</div> 
+		随机推荐end
 		
 			</div>
-		</div>
+		</div> -->
 		<!-- 推荐end -->
 		
 		
@@ -123,8 +112,8 @@
 		</div>
 		<!-- cnzz -->
 		<div style="display:none;">
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260079475'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1260079475' type='text/javascript'%3E%3C/script%3E"));</script>
-		</div>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260157684'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260157684' type='text/javascript'%3E%3C/script%3E"));</script>
+				</div>
 		
 	<script src="/resources/js/jquery2.1.js"></script>
 	<script src="/resources/js/bootstrap3.2.0.js"></script>
@@ -174,7 +163,7 @@
 			}
 		});
 	  	//新增下一页
-	  	var list="p";
+	  	/* var list="p";
 		if(($("p").length<=0) && ($("li").length>0)){
 			list="li";
 			}
@@ -207,7 +196,7 @@
 	  		}else{
 	  		location.href=location.href+"#newsDeatilsBody";
 	  		}
-	  	});
+	  	}); */
 	});
     	var detailsApp=angular.module('detailsApp',[]);
     	detailsApp.controller('detailsCtrl',function($scope,$sce){
@@ -280,6 +269,6 @@
     	});
     	
     	
-    </script>
+    </script>   
 </body>
 </html>

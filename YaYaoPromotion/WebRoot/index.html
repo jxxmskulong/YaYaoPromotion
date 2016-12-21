@@ -16,38 +16,72 @@
 	<div ng-controller="indexCtrl" class="comment-wrap">
 	<!-- 标志 -->
 		<div class="comment-top-fixed comment-title-top">
-		<i class="glyphicon glyphicon-fire"></i>
-		<span class="comment-title-center">禄宏湖南微交易</span>
+		<i class="glyphicon glyphicon-usd" style="top:4px;"></i>
+		<span class="comment-title-center" >禄宏湖南微交易</span>
 		</div>
 	<!-- 标志end -->
 	<!-- 导航 -->
 		<div class="row text-center comment-list-item comment-top-fixed" style="top:50px !important;" id="topNav">
 			
-			<a class="col-xs-2 " href="#" ng-click="list('常见问题')">
-				<div>常见问题</div>
+			<a class="col-xs-2 col-xs-offset-1" href="#" ng-click="list('介绍')">
+				<div>介绍</div>
 			</a>
-			<a class="col-xs-2" href="#" ng-click="list('美图')">
-				<div>美图</div>
+			<a class="col-xs-2" href="#" ng-click="list('教程')">
+				<div>教程</div>
 			</a>
-			<a class="col-xs-2" href="#" ng-click="list('体育')">
-				<div>体育</div>
+			<a class="col-xs-2" href="#" ng-click="list('资讯')">
+				<div>资讯</div>
 			</a>
-			<a class="col-xs-2" href="#" ng-click="list('奇闻')">
-				<div>奇闻</div>
+			<a class="col-xs-2" href="#" ng-click="list('客服')">
+				<div>客服</div>
 			</a>
-			<a class="col-xs-2" href="#" ng-click="list('段子')">
-				<div>段子</div>
+			<a class="col-xs-2" href="#" ng-click="list('登录')">
+				<div>登录</div>
 			</a>
-			<a class="col-xs-2" href="#" ng-click="list('微投')">
-				<div>微投</div>
-			</a>
-			
 		</div>
 		<!-- 导航end -->
 		<!-- 新闻列表 -->
 		<div style="margin-top:105px !important;">
+		
+			<!-- 介绍 -->
+		<div ng-if="navMenu=='介绍'||navMenu=='客服' || navMenu=='登录'"  class="listGroup list-group media comment-list-item" ng-repeat="news in newsList" >
+			
+			 <div class="media-center">
+				<div ><h3 ng-bind="news.title"></h3></div>
+				<div class="text-muted">
+					<span ng-bind="news.time"></span>
+					<span ng-bind="news.type"></span>
+				</div>
+				<span ng-bind-html="html"></span>
+				 <div ng-bind-html="news.content" id="newsDetails">
+				</div> 
+			</div>
+		<!-- 	<div ng-if="navMenu=='客服'">
+			<div style="width:35px !important;height:110px; background:url('resources/img/nlogin.png') no-repeat"></div>
+			</div> -->
+		</div>
+		<!-- 介绍end -->
+		<!-- 教程 -->
+		<div ng-if="navMenu=='教程'" class="listGroup list-group media comment-list-item" ng-repeat="news in newsList"  ng-click="newsDetails(news.type,news.news_id)">
+			<div class="media-left">
+				<a href="#"> <img class="media-object  comment-list-item-img "
+					ng-src="{{news.img_address||newsInit.img_address}}" >
+				</a>
+			</div>
+			<div class="media-body comment-right-body">
+				<div class="media-heading" ></div>
+				<div class="pull-left">
+					<div class="comment-right-body-title"><span ng-bind="news.title||newsInit.title"></span></div>
+					<div class="text-muted">
+					<span ng-bind="news.time||newsInit.time"></span>
+					<span class="newsType" ng-bind="news.type||newsInit.type"></span></div>
+				</div>
+			</div>
+		</div>
+		<!-- 教程end -->
+		
 		<!-- 第一列表 -->
-		<div class="listGroup list-group media comment-list-item" ng-repeat="news in newsList"  ng-if="!$index" ng-click="newsDetails(news.type,news.news_id)">
+		<!-- <div ng-if="navMenu=='资讯'" class="listGroup list-group media comment-list-item" ng-repeat="news in newsList"  ng-if="!$index" ng-click="newsDetails(news.type,news.news_id)">
 			
 			 <div class="media-center">
 				<a href="#"> <img style="width:104%;height:200px;margin:-25px -2%;" class="media-object  comment-list-item-img "
@@ -62,10 +96,10 @@
 					<div class="text-muted"><span ng-bind="news.time||newsInit.time"></span><span class="newsType" ng-bind="news.type||newsInit.type"></span></div>
 				</div>
 			</div> 
-		</div>
+		</div> -->
 		<!-- 第一列表end -->
 		<!-- 第二列表 -->
-		<div class="listGroup list-group media comment-list-item" ng-repeat="news in newsList"  ng-if="$index" ng-click="newsDetails(news.type,news.news_id)">
+		<div ng-if="navMenu=='资讯'" class="listGroup list-group media comment-list-item" ng-repeat="news in newsList"   ng-click="newsDetails(news.type,news.news_id)">
 			<div class="media-left">
 				<a href="#"> <img class="media-object  comment-list-item-img "
 					ng-src="{{news.img_address||newsInit.img_address}}" >
@@ -86,7 +120,7 @@
 		</div>
 		<!-- 新闻列表end -->
 		<!-- 加载更多end -->
-		<a class="btn btn-default btn-block text-center" id="addMore" ng-click="addMore()">
+		<a ng-if="newsList.length>10" class="btn btn-default btn-block text-center" id="addMore" ng-click="addMore()">
 		<div>点击加载更多》</div>
 		</a>
 		<!--  加载更多end -->
@@ -96,8 +130,8 @@
 		<!--  底部end -->
 		<!-- cnzz -->
 		<div style="display:none;">
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260079475'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1260079475' type='text/javascript'%3E%3C/script%3E"));</script>
-		</div>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260157684'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260157684' type='text/javascript'%3E%3C/script%3E"));</script>
+						</div>
 	<script src="/resources/js/jquery2.1.js"></script>
 	<script src="/resources/js/bootstrap3.2.0.js"></script>
 	<script src="/resources/js/angularjs.min.1.5.7.js"></script>
@@ -128,6 +162,20 @@
 			});
 		} */
 	$(function(){
+		//重置详情页所有图片
+		$("img").each(function(){
+			if($(this).attr("src").substring($(this).attr("src").lastIndexOf(".")+1)!="gif"
+					&&$(this).attr("src").substring($(this).attr("src").lastIndexOf(".")+1)!="ico"
+					){
+	  		$(this).css({'width':'100%'});
+			}else{
+				$(this).css({'max-width':'100%'});
+			}
+	  	});
+		//修改热门推荐图片大小
+	  	$(".comment-list-item-img").each(function(){
+	  		$(this).css({'width':'100px','height':'76px'});
+	  	});
 	//获取data-src
 	$("img").each(function(index){
 		if($(this).attr("data-src")){
@@ -136,7 +184,9 @@
 	});
 	});
     	var indexApp=angular.module('indexApp',[]);
-    	indexApp.controller('indexCtrl',function($scope){
+    	indexApp.controller('indexCtrl',function($scope,$sce){
+    		$scope.navMenu=myUtils.GetQueryString("type")||"介绍";
+    		
     		$("#topNav a").each(function(){
     			//不存在，就展示首页
     			if(myUtils.GetQueryString("type")==null){
@@ -156,6 +206,8 @@
     			});
     			
     		});
+    		
+    		//列表
     		function initData(a){
     			$.ajax({  
     		          type : "get",  
@@ -170,6 +222,11 @@
     		        		  $("#addMore").show();
     		        		  
     		        	  }
+    		        	 //变为Html
+    		        	  for (var j = 0; j < data.length; j++) {
+    		        	  data[j].content=$sce.trustAsHtml(data[j].content);
+    	    			  $scope.newsList=data;
+						}
     		        	  if(a.pageNum>1){
     		        		  for (var int = 0; int < data.length; int++) {
     		        			$scope.newsList.push(data[int]); 
@@ -185,11 +242,12 @@
     		initData({
     			pageNum:1,
     			pageSize:10,
-    			type:myUtils.GetQueryString("type")||"常见问题",
+    			type:myUtils.GetQueryString("type")||"介绍",
     			orderName:"time",
     			orderWay:"desc"
     			});
     		$scope.list=function(type){
+    			console.log($scope.navMenu)
     			myUtils.myPrevToast("加载中...", function(){
     			initData({
         			pageNum:1,
