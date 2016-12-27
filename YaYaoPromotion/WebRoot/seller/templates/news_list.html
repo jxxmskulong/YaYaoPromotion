@@ -12,6 +12,7 @@
 	<button class="btn btn-primary" ng-click="listType('登录')">登录</button>
 	
 </div>
+	<button class="btn btn-danger" ng-click="listType('PC端')">PC端</button>
 <!-- 新闻列表选择end -->
 <!-- 新闻列表 -->
 	<div class="panel panel-default">
@@ -36,6 +37,10 @@
 					<button class=" btn btn-warning" ng-click="updateNew(news)"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
 					<button class=" btn btn-danger" ng-click="deleteNew(news)"><span class="glyphicon glyphicon-trash"></span>删除</button>
 				</div>
+				<!-- <div class="pull-right" ng-init="news.type=='PC端'?newsDetails='pc_news_details':newsDetails='news_details'">
+				</div> -->
+					<div >PC端访问链接地址：<a href="/pc_news_details?type={{news.type}}&news_id={{news.news_id}}">/pc_news_details?type={{news.type}}&news_id={{news.news_id}}</a></div>
+					<div >移动端访问链接地址：<a href="/news_details?type={{news.type}}&news_id={{news.news_id}}">/news_details?type={{news.type}}&news_id={{news.news_id}}</a></div>
 			</div>
  		 </div>
  		 
